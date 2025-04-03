@@ -1,0 +1,13 @@
+on:
+  repository_dispatch:
+    types: [ninja-webhook]
+
+jobs:
+  process-webhook:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send to Google Chat
+        run: |
+          curl -X POST -H "Content-Type: application/json" \
+          -d "{\"text\":\"${{ github.event.client_payload.message }}\"}" \
+          ${{ secrets.GOOGLE_CHAT_WEBHOOK_URL }}
