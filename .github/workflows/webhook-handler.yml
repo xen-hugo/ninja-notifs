@@ -1,3 +1,5 @@
+name: Handle NinjaRMM Webhook
+
 on:
   repository_dispatch:
     types: [ninja-webhook]
